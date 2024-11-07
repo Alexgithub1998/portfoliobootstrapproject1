@@ -1,0 +1,701 @@
+<html><head>
+<title>My Portfolio | Developer Portfolio</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+<style>
+:root {
+    --dark-bg: #1a1a1a;
+    --darker-bg: #0f0f0f;
+    --accent: #007bff;
+    --text: #ffffff;
+}
+
+/* Add this to the existing CSS */
+.cube-wrapper {
+    perspective: 1000px;
+    width: 40px;
+    height: 40px;
+}
+
+.cube {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: rotate 10s infinite linear;
+}
+
+.cube-face {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.cube-face.front  { transform: translateZ(20px); }
+.cube-face.back   { transform: rotateY(180deg) translateZ(20px); }
+.cube-face.right  { transform: rotateY(90deg) translateZ(20px); }
+.cube-face.left   { transform: rotateY(-90deg) translateZ(20px); }
+.cube-face.top    { transform: rotateX(90deg) translateZ(20px); }
+.cube-face.bottom { transform: rotateX(-90deg) translateZ(20px); }
+
+@keyframes rotate {
+    from { transform: rotateX(0) rotateY(0); }
+    to { transform: rotateX(360deg) rotateY(360deg); }
+}
+
+body {
+    background-color: var(--dark-bg);
+    color: var(--text);
+}
+
+.navbar {
+    background-color: var(--darker-bg) !important;
+}
+
+.navbar-brand img {
+    width: 80px;
+    height: 80px;
+    margin-left: 5px;
+
+}
+
+.hero-carousel .carousel-item img {
+    height: 600px;
+    object-fit: cover;
+}
+
+.carousel-caption {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 2rem;
+    border-radius: 10px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero-title {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.card {
+    background-color: var(--darker-bg);
+    border: 1px solid var(--accent);
+}
+
+.skill-bar {
+    background-color: var(--darker-bg);
+    border-radius: 5px;
+    padding: 5px;
+    margin: 10px 0;
+}
+
+.skill-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.skill-bar {
+    margin-bottom: 20px;
+}
+
+            .skill-progress {
+                background-color: var(--accent);
+                border-radius: 5px;
+                width: 0;
+                height: 20px;
+                position: relative;
+                transition: width 1.5s ease-in-out;
+            }
+
+
+.projects .card {
+    height: 100%;
+}
+
+.projects .card-img-top {
+    height: 200px;
+    object-fit: cover/contain no-repeat;
+}
+
+.skill-progress::after {
+    content: attr(data-progress);
+    position: absolute;
+    right: 10px;
+    color: white;
+}
+
+.contact-section {
+    background-color: var(--darker-bg);
+    padding: 50px 0;
+}
+
+footer {
+    background-color: var(--darker-bg);
+    padding: 30px 0;
+}
+
+.quick-links {
+    background-color: var(--dark-bg);
+    padding: 50px 0;
+}
+
+#about img {
+    transition: transform 0.3s ease;
+}
+
+#about img:hover {
+    transform: scale(1.05);
+}
+
+#about .btn {
+    transition: all 0.3s ease;
+}
+
+#about .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.carousel-item {
+    transition: transform 0.6s ease-in-out;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 5%;
+    opacity: 0.8;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    opacity: 1;
+}
+
+.carousel-indicators {
+    bottom: 20px;
+}
+
+.carousel-indicators button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin: 0 5px;
+}
+
+.brand-name {
+    color: var(--text);
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+    40% {transform: translateY(-5px);}
+    60% {transform: translateY(-3px);}
+}
+
+@keyframes pulse {
+    0% {transform: scale(1);}
+    50% {transform: scale(1.2);}
+    100% {transform: scale(1);}
+}
+
+@keyframes spin {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(360deg);}
+}
+
+@keyframes shake {
+    0%, 100% {transform: translateX(0);}
+    10%, 30%, 50%, 70%, 90% {transform: translateX(-2px);}
+    20%, 40%, 60%, 80% {transform: translateX(2px);}
+}
+
+@keyframes flash {
+    0%, 50%, 100% {opacity: 1;}
+    25%, 75% {opacity: 0.5;}
+}
+
+.nav-link:hover i {
+    animation-play-state: paused;
+}
+
+.social-icons a {
+    color: var(--text);
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: var(--accent);
+}
+
+.scroll-btn {
+    position: fixed;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background-color: var(--accent);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+    z-index: 1000;
+}
+
+.scroll-btn:hover {
+    transform: scale(1.1);
+}
+
+#scrollTop {
+    bottom: 80px;
+}
+
+#scrollBottom {
+    bottom: 20px;
+}
+
+.scroll-btn.visible {
+    opacity: 1;
+}
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <div class="d-flex align-items-center">
+            <div class="cube-wrapper">
+                <div class="cube">
+                    <div class="cube-face front">HTML</div>
+                    <div class="cube-face back">CSS</div>
+                    <div class="cube-face right">JS</div>
+                    <div class="cube-face left">PHP</div>
+                    <div class="cube-face top">SQL</div>
+                    <div class="cube-face bottom">DEV</div>
+                </div>
+            </div>
+            <span class="brand-name"> @lexbalaoro45@gmail.com</span>
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link scroll-link" href="#heroCarousel">
+                        <i class="fas fa-home fa-fw me-1" style="animation: bounce 2s infinite;"></i>Home
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link scroll-link" href="#about">
+                        <i class="fas fa-user fa-fw me-1" style="animation: pulse 2s infinite;"></i>About
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link scroll-link" href="#projects">
+                        <i class="fas fa-project-diagram fa-fw me-1" style="animation: pulse 2s infinite;"></i>Projects
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link scroll-link" href="#skills">
+                        <i class="fas fa-code fa-fw me-1" style="animation: spin 4s infinite linear;"></i>Skills
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link scroll-link" href="#contact">
+                        <i class="fas fa-envelope fa-fw me-1" style="animation: shake 3s infinite;"></i>Contact
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                        <i class="fas fa-ellipsis-h fa-fw me-1" style="animation: flash 3s infinite;"></i>More
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item scroll-link" href="#demo">
+                            <i class="fas fa-play fa-fw me-1" style="animation: pulse 2s infinite;"></i>Demo
+                        </a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Carousel -->
+<div id="heroCarousel" class="carousel slide hero-carousel" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="3"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="images/fullstack-developer.png" alt="Developer working on code, dark theme setup with multiple monitors" class="d-block w-100" width="1920" height="600">
+            <div class="carousel-caption">
+                <h1 class="hero-title">Full Stack Developer</h1>
+                <p class="hero-subtitle">Creating innovative web solutions with modern technologies</p>
+                
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="images/webdesign.png" alt="Web development project showcase, modern design" class="d-block w-100" width="1920" height="600">
+            <div class="carousel-caption">
+                <h1 class="hero-title">Web Design Excellence</h1>
+                <p class="hero-subtitle">Crafting beautiful and responsive websites</p>
+                
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="images/app.png" alt="Mobile app development process visualization" class="d-block w-100" width="1920" height="600">
+            <div class="carousel-caption">
+                <h1 class="hero-title">Mobile App Development</h1>
+                <p class="hero-subtitle">Building cross-platform mobile experiences</p>
+               
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="images/collaborative.png" alt="Team collaboration in modern office setting" class="d-block w-100" width="1920" height="600">
+            <div class="carousel-caption">
+                <h1 class="hero-title">Collaborative Development</h1>
+                <p class="hero-subtitle">Working together to achieve amazing results</p>
+                
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+<!-- About Section -->
+<section id="about" class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">About Me</h2>
+        <div class="row align-items-center">
+            <div class="col-md-4 mb-4">
+                <div class="position-relative" style="width: 300px; height: 450px;">
+    <div class="rounded-circle bg-primary position-absolute top-0 start-0 w-100 h-100"></div>
+    <img src="images/pictureko.png" 
+         alt="Professional headshot of Alex Balaoro" 
+         class="rounded-circle img-fluid shadow position-relative"
+         width="300" height="300">
+                    <div class="position-absolute bottom-0 end-0">
+                        <!--<i class="fas fa-code-branch fa-3x text-primary"></i>-->
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <h3 class="mb-4">Full Stack Developer</h3>
+                <p class="lead mb-4">
+                    Passionate about creating elegant solutions to complex problems through code. With expertise in both frontend and backend development, I bring ideas to life with clean, efficient, and maintainable code.
+                </p>
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <h4><i class="fas fa-graduation-cap me-2"></i>Education</h4>
+                        <ul class="list-unstyled">
+                            <li class="mb-2">BS Business Administration</li>
+                            <li class="mb-2">Bachelor of Laws</li>
+                            <li class="mb-2">Full Stack Web Development</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h4><i class="fas fa-briefcase me-2"></i>Experience</h4>
+                        <ul class="list-unstyled">
+                            <li class="mb-2">Junior Web Developer - 1 year</li>
+                            <li class="mb-2">Frontend Developer - 1 year</li>
+                            <li class="mb-2">Backend Developer - 1 year</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="d-flex gap-3">
+                    <a href="https://example.com/resume" class="btn btn-primary">
+                        <i class="fas fa-download me-2"></i>Download Resume
+                    </a>
+                    <a href="#contact" class="btn btn-outline-primary scroll-link">
+                        <i class="fas fa-envelope me-2"></i>Get in Touch
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Projects Section -->
+<section id="projects" class="projects py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">My Projects</h2>
+        <div class="row">
+            <div class="col-md-3 mb-4">
+                <div class="card">
+                    <img src="images/webdevproject.jpg" alt="E-commerce website interface showing product grid" class="card-img-top" width="800" height="600">
+                    <div class="card-body">
+                        <h5 class="card-title">Project-1</h5>
+                        <p class="card-text">Static Website</p>
+                        <a href="https://alexgithub1998.github.io/webdev-project/" target="_blank" class="btn btn-primary">View Project</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="card">
+                    <img src="images/webdevproject1.jpg" alt="Mobile app UI design showing dashboard" class="card-img-top" width="800" height="600">
+                    <div class="card-body">
+                        <h5 class="card-title">Project-2</h5>
+                        <p class="card-text">Static Website</p>
+                        <a href="https://alexgithub1998.github.io/LCT-html-css-project2/" target="_blank" class="btn btn-primary">View Project</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="card">
+                    <img src="images/webdevproject2.jpg" alt="Web dashboard showing data analytics" class="card-img-top" width="800" height="600">
+                    <div class="card-body">
+                        <h5 class="card-title">Project-4</h5>
+                        <p class="card-text">Static Website</p>
+                        <a href="https://alexgithub1998.github.io/webcreators/" target="_blank" class="btn btn-primary">View Project</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="card">
+                    <img src="images/webdevproject3.jpg" alt="Chat application interface" class="card-img-top" width="800" height="600">
+                    <div class="card-body">
+                        <h5 class="card-title">Project-5</h5>
+                        <p class="card-text">Static Website</p>
+                        <a href="https://alexgithub1998.github.io/myportfolio/" target="_blank" class="btn btn-primary">View Project</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Demo Section -->
+<section id="demo" class="demo py-5 bg-dark">
+    <div class="container">
+        <h2 class="text-center mb-5">Live Demo</h2>
+        <div class="ratio ratio-16x9">
+            <iframe src="https://www.youtube.com/embed/uxWV45KvhhM" title="Project Demo" allowfullscreen></iframe>
+        </div>
+    </div>
+</section>
+
+<!-- Skills Section -->
+<section id="skills" class="skills py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">My Skills</h2>
+        <div class="skill-bar">
+            <span class="skill-label">HTML</span>
+            <div class="skill-progress" data-progress="90%" style="--final-width: 95%"></div>
+        </div>
+        <div class="skill-bar">
+            <span class="skill-label">CSS</span>
+            <div class="skill-progress" data-progress="88%" style="--final-width: 93%"></div>
+        </div>
+        <div class="skill-bar">
+            <span class="skill-label">Javascript</span>
+            <div class="skill-progress" data-progress="86%" style="--final-width: 88%"></div>
+        </div>
+        <div class="skill-bar">
+            <span class="skill-label">PHP</span>
+            <div class="skill-progress" data-progress="89%" style="--final-width: 89%"></div>
+        </div>
+        <div class="skill-bar">
+            <span class="skill-label">MYSQL</span>
+            <div class="skill-progress" data-progress="88%" style="--final-width: 88%"></div>
+        </div>
+        
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="contact-section">
+    <div class="container">
+        <h2 class="text-center mb-5">Contact Me</h2>
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+                <form>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" placeholder="Your Name">
+                    </div>
+                    <div class="mb-3">
+                        <input type="email" class="form-control" placeholder="Your Email">
+                    </div>
+                    <div class="mb-3">
+                        <textarea class="form-control" rows="5" placeholder="Your Message"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Quick Links -->
+<section class="quick-links">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <h5>Navigation</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#heroCarousel">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h5>Social Media</h5>
+                <ul class="list-unstyled">
+                    <li><a href="https://github.com/Alexgithub1998" target="_blank">GitHub</a></li>
+                    <li><a href="https://www.facebook.com/maxmax.sendoro" target="_blank">Facebook</a></li>
+                    <li><a href="https://www.youtube.com/@alexb-v1y" target="_blank">Youtube</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="text-center">
+    <div class="container">
+        <p>&copy; 2024 Developer Portfolio. All rights reserved.</p>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/maxmax.sendoro" target="_blank" class="me-3"><i class="fab fa-facebook"></i></a>
+            <a href="https://github.com/Alexgithub1998" target="_blank" class="me-3"><i class="fab fa-github"></i></a>
+            <a href="https://m.me/maxmax.sendoro" target="_blank" class="me-3"><i class="fab fa-facebook-messenger"></i></a>
+            <a href="https://www.youtube.com/@alexb-v1y" target="_blank" class="me-3"><i class="fab fa-youtube"></i></a>
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=alexbalaoro45@gmail.com&su=Your%20Subject&body=Hello%20there!" target="_blank" class="me-3"><i class="fas fa-envelope"></i></a>
+            <a href="https://linkedin.com" class="me-3"><i class="fab fa-linkedin"></i></a>
+            <a href="https://tiktok.com" class="me-3"><i class="fab fa-tiktok"></i></a>
+        </div>
+    </div>
+</footer>
+
+<!-- Scroll Buttons -->
+<div class="scroll-btn" id="scrollTop">
+    <i class="fas fa-chevron-up"></i>
+</div>
+<div class="scroll-btn" id="scrollBottom">
+    <i class="fas fa-chevron-down"></i>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize the carousel with options
+    const carousel = new bootstrap.Carousel(document.querySelector('#heroCarousel'), {
+        interval: 3000, // Change slides every 5 seconds
+        wrap: true,     // Continuous loop
+        keyboard: true  // Allow keyboard navigation
+    });
+
+    const skillBars = document.querySelectorAll('.skill-progress');
+
+    const observerCallback = (entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const width = entry.target.style.getPropertyValue('--final-width');
+                entry.target.style.width = width;
+                observer.unobserve(entry.target);
+            }
+        });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, {
+        threshold: 0.5
+    });
+
+    skillBars.forEach(bar => {
+        observer.observe(bar);
+    });
+
+    const scrollTopBtn = document.getElementById('scrollTop');
+    const scrollBottomBtn = document.getElementById('scrollBottom');
+
+    window.addEventListener('scroll', () => {
+        const scrollPosition = window.scrollY;
+        const windowHeight = window.innerHeight;
+        const documentHeight = document.documentElement.scrollHeight;
+
+        if (scrollPosition > windowHeight * 0.5) {
+            scrollTopBtn.classList.add('visible');
+        } else {
+            scrollTopBtn.classList.remove('visible');
+        }
+
+        if (scrollPosition < documentHeight - windowHeight * 1.5) {
+            scrollBottomBtn.classList.add('visible');
+        } else {
+            scrollBottomBtn.classList.remove('visible');
+        }
+    });
+
+    scrollTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
+    scrollBottomBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: document.documentElement.scrollHeight,
+            behavior: 'smooth'
+        });
+    });
+
+    document.querySelectorAll('.scroll-link').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                const navbarHeight = document.querySelector('.navbar').offsetHeight;
+                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+                
+                const navbarCollapse = document.querySelector('.navbar-collapse');
+                if (navbarCollapse.classList.contains('show')) {
+                    navbarCollapse.classList.remove('show');
+                }
+            }
+        });
+    });
+});
+</script>
+</body>
+</html>
